@@ -28,11 +28,11 @@ public class BookingController {
 		return this.bookingServe.getBookings();
 	}
 	
-	//@PostMapping("/bookings")
-	//public Bookings addbooking(@RequestBody Bookings booking) 
-	//{
-	//	return this.bookingServe.addbooking(booking);
-	//}
+	@PostMapping("/bookings")
+	public Bookings addbooking(@RequestBody Bookings booking) 
+	{
+		return this.bookingServe.addbooking(booking);
+	}
 	
 	@DeleteMapping("/bookings/{bookingId}")
 	public void deleteBooking(@PathVariable("bookingId") long bookingId)
