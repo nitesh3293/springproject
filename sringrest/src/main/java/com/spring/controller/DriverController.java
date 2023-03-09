@@ -3,6 +3,7 @@ package com.spring.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,31 +24,38 @@ public class DriverController {
 	//get Driver Information
 	@GetMapping("/drivers")
 	public List<Drivers> getDrivers()
-		{
-			return this.driverServe.getDrivers();
-		}
+	{
+		return this.driverServe.getDrivers();
+	}
 		
 				
-		//get Specific Driver Information
-		@GetMapping("/drivers/{id}")
-		public Drivers getDrivers(@PathVariable long id)
-		{
-			return this.driverServe.getDrivers(id);
-		}
+	//get Specific Driver Information
+	@GetMapping("/drivers/{id}")
+	public Drivers getDrivers(@PathVariable long id)
+	{
+		return this.driverServe.getDrivers(id);
+	}
 		
-		//postUsersInformation
-		@PostMapping("/drivers")
-		public Drivers addDriver(@RequestBody Drivers driver) 
-		{
-			return this.driverServe.addDriver(driver);
-		}
+	//post Drivers Information
+	@PostMapping("/drivers")
+	public Drivers addDriver(@RequestBody Drivers driver) 
+	{
+		return this.driverServe.addDriver(driver);
+	}
 		
 		
-		//UpdateUserInformation
-		@PutMapping("/drivers/{id}")
-		public Drivers updateDriver(@RequestBody Drivers driver, @PathVariable long id)
-		{
-			 this.driverServe.updateDriver(driver,id);
-			 return driver; 
-		}
+	//Update DriverInformation
+	@PutMapping("/drivers/{id}")
+	public Drivers updateDriver(@RequestBody Drivers driver, @PathVariable long id)
+	{
+		 this.driverServe.updateDriver(driver,id);
+		 return driver; 
+	}
+	
+	//Delete driver Information
+	@DeleteMapping("/drivers/{id}")
+	public void deleteDriver(@PathVariable long id)
+	{
+		this.driverServe.deleteDriver(id);
+	}
 }

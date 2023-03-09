@@ -62,6 +62,13 @@ public class UserServiceimpl implements userService {
 		}).collect(Collectors.toList());
 	}
 
+	@Override
+	public void deleteUser(long id) {
+		// TODO Auto-generated method stub
+		
+		list = list.stream().filter(x -> x.getId() != id).collect(Collectors.toList());
+	}
+
 	
 
 }

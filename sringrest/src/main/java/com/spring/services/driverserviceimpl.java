@@ -46,15 +46,22 @@ public class driverserviceimpl implements driverservice {
 	@Override
 	public void updateDriver(Drivers driver, long id) {
 		// TODO Auto-generated method stub
-		list = list.stream().map(u ->{
-			if(u.getId() == id)
+		list = list.stream().map(d ->{
+			if(d.getId() == id)
 			{
-				u.setAge(driver.getAge());
-				u.setGender(driver.getGender());
-				u.setName(driver.getName());
+				d.setAge(driver.getAge());
+				d.setGender(driver.getGender());
+				d.setName(driver.getName());
 			}
-			return u;
+			return d;
 		}).collect(Collectors.toList());
+	}
+
+	@Override
+	public void deleteDriver(long id) {
+		// TODO Auto-generated method stub
+		
+		list = list.stream().filter(x -> x.getId() != id).collect(Collectors.toList());
 	}
 
 	

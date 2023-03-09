@@ -8,9 +8,10 @@ public class Drivers {
 	private long id;
 	private String vehicle;
 	private String model;
+	private boolean status;
 	
 	
-	public Drivers(String name, char gender, int age, long id, String vehicle, String model) {
+	public Drivers(String name, char gender, int age, long id, String vehicle, String model, boolean status) {
 		super();
 		this.name = name;
 		this.gender = gender;
@@ -18,6 +19,7 @@ public class Drivers {
 		this.id = id;
 		this.vehicle = vehicle;
 		this.model = model;
+		this.status = status;
 	}
 
 
@@ -85,12 +87,20 @@ public class Drivers {
 	public void setModel(String model) {
 		this.model = model;
 	}
+	
+	public boolean isStatus() {
+		return status;
+	}
+	
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
 
 	@Override
 	public String toString() {
 		return "Drivers [name=" + name + ", gender=" + gender + ", age=" + age + ", id=" + id + ", vehicle=" + vehicle
-				+ ", model=" + model + "]";
+				+ ", model=" + model + ", status=" + status +"]";
 	}
 	
 	
