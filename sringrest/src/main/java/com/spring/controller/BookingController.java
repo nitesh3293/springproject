@@ -34,10 +34,10 @@ public class BookingController {
 		return this.bookingServe.addbooking(booking);
 	}
 	
-	@DeleteMapping("/bookings/{bookingId}")
-	public void deleteBooking(@PathVariable("bookingId") long bookingId)
+	@DeleteMapping("/bookings/{id}")
+	public void deleteBooking(@PathVariable("id") long id)
 	{
-		this.bookingServe.deleteBooking(bookingId);
+		this.bookingServe.deleteBooking(id);
 	}
 
 }

@@ -12,16 +12,16 @@ import com.spring.entities.Users;
 @Service
 public class UserServiceimpl implements userService {
 	
-	List<Users> list;
+	List<Users> userList;
 	
 	public UserServiceimpl() {
-		 list = new ArrayList<>();
+		userList = new ArrayList<>();
 	}
 
 	@Override
 	public List<Users> getUsers() {
 		// TODO Auto-generated method stub
-		return list;
+		return userList;
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class UserServiceimpl implements userService {
 		// TODO Auto-generated method stub
 		Users u = null;
 		
-		for(Users user : list)
+		for(Users user : userList)
 		{
 			if(user.getId() == id)
 			{
@@ -43,7 +43,7 @@ public class UserServiceimpl implements userService {
 	@Override
 	public Users addUser(Users user) {
 		// TODO Auto-generated method stub
-		list.add(user);
+		userList.add(user);
 		return user;
 	}
 
@@ -51,7 +51,7 @@ public class UserServiceimpl implements userService {
 	public void updateUser(Users user, long id) {
 		// TODO Auto-generated method stub
 		
-		list = list.stream().map(u ->{
+		userList = userList.stream().map(u ->{
 			if(u.getId() == id)
 			{
 				u.setAge(user.getAge());
@@ -66,7 +66,7 @@ public class UserServiceimpl implements userService {
 	public void deleteUser(long id) {
 		// TODO Auto-generated method stub
 		
-		list = list.stream().filter(x -> x.getId() != id).collect(Collectors.toList());
+		userList = userList.stream().filter(x -> x.getId() != id).collect(Collectors.toList());
 	}
 
 	
