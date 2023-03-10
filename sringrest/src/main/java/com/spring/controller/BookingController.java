@@ -3,6 +3,10 @@ package com.spring.controller;
 
 import java.util.List;
 
+import com.spring.dto.SearchCabRequestDTO;
+import com.spring.entities.Driver;
+import com.spring.entities.Location;
+import com.spring.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,27 +15,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.entities.Bookings;
-import com.spring.services.bookingService;
+import com.spring.entities.SearchRequestCab;
+import com.spring.services.BookingService;
 
 
 @RestController
 public class BookingController {
 	
 	@Autowired
-	private bookingService bookingServe;
+	private BookingService bookingServe;
 	
 	//get Driver Information
 	@GetMapping("/bookings")
-	public List<Bookings> getBookings()
+	public List<SearchRequestCab> getBookings()
 	{
 		return this.bookingServe.getBookings();
 	}
 	
 	@PostMapping("/bookings")
-	public Bookings addbooking(@RequestBody Bookings booking) 
+	public SearchRequestCab addbooking(@RequestBody SearchRequestCab searchRequestCab)
 	{
-		return this.bookingServe.addbooking(booking);
+		return this.bookingServe.addbooking(searchRequestCab);
 	}
 	
 	@DeleteMapping("/bookings/{id}")
@@ -40,4 +44,17 @@ public class BookingController {
 		this.bookingServe.deleteBooking(id);
 	}
 
+	@GetMapping("/searchCab")
+	public List<Driver> search(SearchCabRequestDTO searchCabRequestDTO)
+	{
+		SearchRequestCab searchCabRequest = new SearchRequestCab(101, searchCabRequestDTO.getUser(),
+				searchCabRequestDTO.getStart(), searchCabRequestDTO.getEnd());
+		return this.bookingServe.findDriverForBooking(searchCabRequest);
+	}
+
+	@PostMapping()
+	public BookingDetails bookCab(User user, Driver driver)
+	{
+
+	}
 }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.entities.Users;
+import com.spring.entities.User;
 import com.spring.services.userService;
 
 @RestController
@@ -25,21 +25,21 @@ public class MyController {
 	
 	//getUserInformation
 	@GetMapping("/users")
-	public List<Users> getUsers()
+	public List<User> getUsers()
 	{
 		return this.userServe.getUsers();
 	}
 		
 	//getSpecificUserInformation
 	@GetMapping("/users/{id}")
-	public Users getUsers(@PathVariable("id") long id)
+	public User getUsers(@PathVariable("id") long id)
 	{
 		return this.userServe.getUsers(id);
 	}
 	
 	//postUsersInformation
 	@PostMapping("/users")
-	public Users addUser(@RequestBody Users user) 
+	public User addUser(@RequestBody User user)
 	{
 		return this.userServe.addUser(user);
 	}
@@ -47,7 +47,7 @@ public class MyController {
 	
 	//UpdateUserInformation
 	@PutMapping("/users/{id}")
-	public Users updateUser(@RequestBody Users user, @PathVariable("id") long id)
+	public User updateUser(@RequestBody User user, @PathVariable("id") long id)
 	{
 		 this.userServe.updateUser(user,id);
 		 return user; 

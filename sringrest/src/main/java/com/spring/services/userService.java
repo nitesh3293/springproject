@@ -2,17 +2,17 @@ package com.spring.services;
 
 import java.util.List;
 
-import com.spring.entities.Users;
+import com.spring.entities.User;
 
 public interface userService {
 	
-	public List<Users> getUsers();
+	public List<User> getUsers();
 	
-	public Users getUsers(long id);
+	public User getUsers(long id);
 	
-	public Users addUser(Users user);
+	public User addUser(User user);
 	
-	public void updateUser(Users user, long id);
+	public void updateUser(User user, long id);
 	
 	public void deleteUser(long id);
 }

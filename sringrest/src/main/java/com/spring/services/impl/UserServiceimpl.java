@@ -1,35 +1,36 @@
-package com.spring.services;
+package com.spring.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.spring.services.userService;
 import org.springframework.stereotype.Service;
 
 
-import com.spring.entities.Users;
+import com.spring.entities.User;
 
 @Service
 public class UserServiceimpl implements userService {
 	
-	List<Users> userList;
+	List<User> userList;
 	
 	public UserServiceimpl() {
 		userList = new ArrayList<>();
 	}
 
 	@Override
-	public List<Users> getUsers() {
+	public List<User> getUsers() {
 		// TODO Auto-generated method stub
 		return userList;
 	}
 
 	@Override
-	public Users getUsers(long id) {
+	public User getUsers(long id) {
 		// TODO Auto-generated method stub
-		Users u = null;
+		User u = null;
 		
-		for(Users user : userList)
+		for(User user : userList)
 		{
 			if(user.getId() == id)
 			{
@@ -41,14 +42,14 @@ public class UserServiceimpl implements userService {
 	}
 
 	@Override
-	public Users addUser(Users user) {
+	public User addUser(User user) {
 		// TODO Auto-generated method stub
 		userList.add(user);
 		return user;
 	}
 
 	@Override
-	public void updateUser(Users user, long id) {
+	public void updateUser(User user, long id) {
 		// TODO Auto-generated method stub
 		
 		userList = userList.stream().map(u ->{

@@ -1,13 +1,13 @@
 package com.spring.entities;
 
-public class Users {
+public class User {
 
 	private String name;
 	private char gender;
 	private int age;
 	private long id;
 	
-	public Users(String name, char gender, int age, long id) {
+	public User(String name, char gender, int age, long id) {
 		super();
 		this.name = name;
 		this.gender = gender;
@@ -15,7 +15,7 @@ public class Users {
 		this.id = id;
 	}
 
-	public Users() {
+	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

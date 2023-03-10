@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.entities.Drivers;
+import com.spring.entities.Driver;
 import com.spring.services.driverservice;
 
 
@@ -23,7 +23,7 @@ public class DriverController {
 	
 	//get Driver Information
 	@GetMapping("/drivers")
-	public List<Drivers> getDrivers()
+	public List<Driver> getDrivers()
 	{
 		return this.driverServe.getDrivers();
 	}
@@ -31,14 +31,14 @@ public class DriverController {
 				
 	//get Specific Driver Information
 	@GetMapping("/drivers/{id}")
-	public Drivers getDrivers(@PathVariable long id)
+	public Driver getDrivers(@PathVariable long id)
 	{
 		return this.driverServe.getDrivers(id);
 	}
 		
 	//post Drivers Information
 	@PostMapping("/drivers")
-	public Drivers addDriver(@RequestBody Drivers driver) 
+	public Driver addDriver(@RequestBody Driver driver)
 	{
 		return this.driverServe.addDriver(driver);
 	}
@@ -46,7 +46,7 @@ public class DriverController {
 		
 	//Update DriverInformation
 	@PutMapping("/drivers/{id}")
-	public Drivers updateDriver(@RequestBody Drivers driver, @PathVariable long id)
+	public Driver updateDriver(@RequestBody Driver driver, @PathVariable long id)
 	{
 		 this.driverServe.updateDriver(driver,id);
 		 return driver; 
