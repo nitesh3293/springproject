@@ -46,10 +46,9 @@ public class DriverController {
 		
 	//Update DriverInformation
 	@PutMapping("/drivers/{id}")
-	public Driver updateDriver(@RequestBody Driver driver, @PathVariable long id)
+	public void updateDriver(@RequestBody Driver driver, @PathVariable long id)
 	{
 		 this.driverServe.updateDriver(driver,id);
-		 return driver; 
 	}
 	
 	//Delete driver Information

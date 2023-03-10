@@ -1,15 +1,11 @@
 package com.spring.services.impl;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-import com.spring.entities.Location;
-import com.spring.entities.SearchRequestCab;
 import com.spring.entities.Driver;
 import com.spring.repo.DriverRepo;
 import com.spring.services.DriverService;
 import com.spring.services.driverservice;
-import org.apache.tomcat.util.digester.ArrayStack;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +19,7 @@ public class DriverServiceImpl implements DriverService {
 	private static Integer MAX_DISTANCE = 5;
 	@Override
 	public List<Driver> getDrivers() {
-		return ;
+		return driverRepo.getDrivers();
 	}
 
 	@Override
@@ -37,13 +33,12 @@ public class DriverServiceImpl implements DriverService {
 	}
 
 	@Override
-	public Driver updateDriver(long id, Driver driver) {
-		return null;
+	public void updateDriver(long id, Driver driver) {
+
 	}
 
 	@Override
 	public void deleteDriver(long id) {
-
 	}
 
 
