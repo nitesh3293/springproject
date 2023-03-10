@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spring.entities.SearchRequestCab;
 import com.spring.services.BookingService;
 
-
+@RequestBody
 @RestController
 public class BookingController {
 	
@@ -33,9 +33,9 @@ public class BookingController {
 	}
 	
 	@PostMapping("/bookings")
-	public SearchRequestCab addbooking(@RequestBody SearchRequestCab searchRequestCab)
+	public SearchRequestCab addbooking(@RequestBody User user, @RequestBody Driver driver)
 	{
-		return this.bookingServe.addbooking(searchRequestCab);
+		return this.bookingServe.addbooking(user, driver);
 	}
 	
 	@DeleteMapping("/bookings/{id}")

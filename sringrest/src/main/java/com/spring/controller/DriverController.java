@@ -2,6 +2,7 @@ package com.spring.controller;
 
 import java.util.List;
 
+import com.spring.services.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,14 +13,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.entities.Driver;
-import com.spring.services.driverservice;
 
 
 @RestController
 public class DriverController {
 	
 	@Autowired
-	private driverservice driverServe;
+	private DriverService driverServe;
 	
 	//get Driver Information
 	@GetMapping("/drivers")
@@ -46,9 +46,10 @@ public class DriverController {
 		
 	//Update DriverInformation
 	@PutMapping("/drivers/{id}")
-	public void updateDriver(@RequestBody Driver driver, @PathVariable long id)
+	public Driver updateDriver(@RequestBody Driver driver, @PathVariable long id)
 	{
-		 this.driverServe.updateDriver(driver,id);
+		 this.driverServe.updateDriver(id, driver);
+		 return driver;
 	}
 	
 	//Delete driver Information

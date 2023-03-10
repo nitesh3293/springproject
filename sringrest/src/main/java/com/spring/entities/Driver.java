@@ -15,8 +15,8 @@ public class Driver {
 	private String name;
 	private char gender;
 	private int age;
-	private String vehicle;
 	private String model;
+	private String registration;
 	Location currentLocation;
 	private int status;
 	

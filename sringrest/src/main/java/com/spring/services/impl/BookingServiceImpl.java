@@ -1,13 +1,15 @@
 package com.spring.services.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import com.spring.entities.Location;
 import com.spring.entities.SearchRequestCab;
 import com.spring.entities.Driver;
+import com.spring.entities.User;
+import com.spring.repo.BookingRepo;
 import com.spring.repo.DriverRepo;
+import com.spring.repo.UserRepo;
 import com.spring.services.BookingService;
 import org.apache.tomcat.util.digester.ArrayStack;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,22 +21,27 @@ public class BookingServiceImpl implements BookingService {
 	@Autowired
 	DriverRepo driverRepo;
 
-	List<SearchRequestCab> searchRequestCabList;
-	
-	public BookingServiceImpl() {
-		searchRequestCabList = new ArrayList<>();
-	}
-	
+	@Autowired
+	UserRepo userRepo;
+
+	@Autowired
+	private  BookingRepo bookRepo;
+
 	@Override
 	public List<SearchRequestCab> getBookings(){
 		// TODO Auto-generated method stub
-		return searchRequestCabList;
+		return bookRepo.getBookings();
+	}
+
+	@Override
+	public SearchRequestCab addbooking(Driver driver)
+	{
+		
 	}
 
 	@Override
 	public void deleteBooking(long id){
 		// TODO Auto-generated method stub
-		searchRequestCabList = searchRequestCabList.stream().filter(x -> x.getId() != id).collect(Collectors.toList());
 	}
 
 	public List<Driver> findDriverForBooking(SearchRequestCab searchRequestCab)
@@ -55,9 +62,13 @@ public class BookingServiceImpl implements BookingService {
 		}
 		return nearDrivers;
 	}
-	public Integer calculateDistance(Location driverLocation, Location userLocation)
+	public Double calculateDistance(Location driverLocation, Location userLocation)
 	{
-		Integer distance =5;
+		double distance = (int) Math.sqrt((driverLocation.getLatitude()- userLocation.getLatitude())
+				*(driverLocation.getLatitude()- userLocation.getLatitude())
+				+ (driverLocation.getLongitude()- userLocation.getLongitude())
+				*(driverLocation.getLongitude()- userLocation.getLongitude()));
+
 		return distance;
 	}
 

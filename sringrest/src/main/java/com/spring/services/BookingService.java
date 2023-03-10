@@ -9,7 +9,7 @@ public interface BookingService {
 
 	public  List<SearchRequestCab> getBookings();
 
-	public SearchRequestCab addbooking(SearchRequestCab searchRequestCab);
+	public SearchRequestCab addbooking(Driver driver);
 
 	public void deleteBooking(long id);
 
