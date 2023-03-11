@@ -3,10 +3,10 @@ package com.spring.controller;
 
 import java.util.List;
 
+import com.spring.dto.BookingRequestDTO;
+import com.spring.entities.BookingDetails;
 import com.spring.dto.SearchCabRequestDTO;
-import com.spring.entities.Driver;
-import com.spring.entities.Location;
-import com.spring.entities.User;
+import com.spring.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.entities.SearchRequestCab;
 import com.spring.services.BookingService;
 
-@RequestBody
 @RestController
 public class BookingController {
 	
@@ -32,11 +30,13 @@ public class BookingController {
 		return this.bookingServe.getBookings();
 	}
 	
-	@PostMapping("/bookings")
-	public SearchRequestCab addbooking(@RequestBody User user, @RequestBody Driver driver)
+	/*@PostMapping("/bookings")
+	public SearchRequestCab addbooking(@RequestBody SearchRequestCab searchRequestCab)
 	{
-		return this.bookingServe.addbooking(user, driver);
-	}
+		SearchRequestCab searchCabRequest = new SearchRequestCab(101, searchCabRequestCab.getUser(),
+				searchCabRequestDTO.getStart(), searchCabRequestDTO.getEnd());
+		return this.bookingServe.addbooking(searchRequestCab);
+	}*/
 	
 	@DeleteMapping("/bookings/{id}")
 	public void deleteBooking(@PathVariable("id") long id)
@@ -45,16 +45,17 @@ public class BookingController {
 	}
 
 	@GetMapping("/searchCab")
-	public List<Driver> search(SearchCabRequestDTO searchCabRequestDTO)
+	public List<Driver> search(@RequestBody SearchCabRequestDTO searchCabRequestDTO)
 	{
 		SearchRequestCab searchCabRequest = new SearchRequestCab(101, searchCabRequestDTO.getUser(),
 				searchCabRequestDTO.getStart(), searchCabRequestDTO.getEnd());
 		return this.bookingServe.findDriverForBooking(searchCabRequest);
 	}
 
-	@PostMapping()
-	public BookingDetails bookCab(User user, Driver driver)
+	@PostMapping("/trip")
+	public BookingDetails addBooking(@RequestBody BookingRequestDTO bookingRequestDTO)
 	{
+		return bookingServe.addBooking(bookingRequestDTO.getDriver(),bookingRequestDTO.getUser());
 
 	}
 }

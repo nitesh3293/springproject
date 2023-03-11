@@ -1,12 +1,11 @@
 package com.spring.services.impl;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
-import com.spring.entities.Location;
-import com.spring.entities.SearchRequestCab;
-import com.spring.entities.Driver;
-import com.spring.entities.User;
+import com.spring.entities.*;
+import com.spring.repo.BookingDetailsRepo;
 import com.spring.repo.BookingRepo;
 import com.spring.repo.DriverRepo;
 import com.spring.repo.UserRepo;
@@ -25,6 +24,8 @@ public class BookingServiceImpl implements BookingService {
 	UserRepo userRepo;
 
 	@Autowired
+	BookingDetailsRepo bookingDetailsRepo;
+	@Autowired
 	private  BookingRepo bookRepo;
 
 	@Override
@@ -34,9 +35,15 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public SearchRequestCab addbooking(Driver driver)
+	public BookingDetails addBooking(Driver driver, User user)
 	{
-		
+		BookingDetails details = new BookingDetails();
+		details.setDriver(driver);
+		details.setUser(user);
+		details.setId(Long.valueOf(UUID.randomUUID().toString()));
+		details.setStartTime(System.currentTimeMillis());
+
+		return bookingDetailsRepo.addBooking(details);
 	}
 
 	@Override

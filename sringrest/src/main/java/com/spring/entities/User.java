@@ -6,6 +6,8 @@ public class User {
 	private char gender;
 	private int age;
 	private long id;
+
+	//List<BookingDetails> myRides;
 	
 	public User(String name, char gender, int age, long id) {
 		super();
