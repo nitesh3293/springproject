@@ -42,7 +42,7 @@ public class BookingServiceImpl implements BookingService {
 		details.setUser(user);
 		details.setId(1L);
 		details.setStartTime(System.currentTimeMillis());
-
+		//details.setDriver.serStatus(0);
 		return bookingDetailsRepo.addBooking(details);
 	}
 
