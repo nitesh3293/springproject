@@ -55,7 +55,7 @@ public class BookingController {
 	@PostMapping("/trip")
 	public BookingDetails addBooking(@RequestBody BookingRequestDTO bookingRequestDTO)
 	{
-		return bookingServe.addBooking(bookingRequestDTO.getDriver(),bookingRequestDTO.getUser());
+		return bookingServe.addBooking(bookingRequestDTO.getDriver(),bookingRequestDTO.getUser(), bookingRequestDTO.getId());
 
 	}
 }

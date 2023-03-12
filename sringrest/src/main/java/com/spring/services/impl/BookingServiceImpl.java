@@ -35,12 +35,12 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public BookingDetails addBooking(Driver driver, User user)
+	public BookingDetails addBooking(Driver driver, User user, long id)
 	{
 		BookingDetails details = new BookingDetails();
 		details.setDriver(driver);
 		details.setUser(user);
-		details.setId(Long.valueOf(UUID.randomUUID().toString()));
+		details.setId(1L);
 		details.setStartTime(System.currentTimeMillis());
 
 		return bookingDetailsRepo.addBooking(details);

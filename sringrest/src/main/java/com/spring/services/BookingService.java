@@ -11,7 +11,7 @@ public interface BookingService {
 
 	public  List<SearchRequestCab> getBookings();
 
-	public BookingDetails addBooking(Driver driver, User user);
+	public BookingDetails addBooking(Driver driver, User user, long id);
 
 	public void deleteBooking(long id);
 
